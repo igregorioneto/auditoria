@@ -78,8 +78,6 @@ class Auditoria extends Connection implements funcAuditoria
 
 	public function addAuditoria()
 	{
-		$conn = $this->connect();
-
 		$_achado = $this->getAchado();
 		$_manifestacao = $this->getManifestacao();
 		$_conclusao = $this->getConclusao();
@@ -87,21 +85,52 @@ class Auditoria extends Connection implements funcAuditoria
 		$_estimativa = $this->getEstimativa();
 		$_auditor = $this->getAuditor();
 
+		$conn = $this->connect();	
+
 		$sql = "insert into tb_auditoria values(default,:achado,:manifestacao,:conclusao,:prazo,:estimativa,:auditor)";
 		$stmt = $conn->prepare($sql);
 		$stmt->bindParam(':achado',$_achado);
-		$stmt->bindParam(':manifestacao'$_manifestacao);
+		$stmt->bindParam(':manifestacao',$_manifestacao);
 		$stmt->bindParam('conclusao',$_conclusao);
 		$stmt->bindParam(':prazo',$_prazo);
 		$stmt->bindParam(':estimativa',$_estimativa);
 		$stmt->bindParam(':auditor',$_auditor);
 
-		$stmt->execute();
+		if ($stmt->execute()) {
+			$destino = header("Location:../../public/home.php");
+		}else{
+			echo "erro";
+		}
+		
 	}
 	public function selectAuditoria($search)
 	{
 
 	}
+
+	public function selectAllAuditoria()
+	{
+		$conn = $this->connect();
+
+		$sql = "select a.achado, a.manifestacao, a.conclusao, a.prazo, a.estimativa, au.nome from 
+			tb_auditoria a join tb_auditor au on a.auditor_id = au.id;";
+		$stmt = $conn->prepare($sql);
+		$stmt->execute();
+
+		$resultado = $stmt->fetchAll();
+
+		foreach ($resultado as $value) {
+			echo "<tr>";
+			echo "<td>".$value['nome']."</td>";
+			echo "<td>".$value['achado']."</td>";
+			echo "<td>".$value['manifestacao']."</td>";
+			echo "<td>".$value['conclusao']."</td>";
+			echo "<td>".$value['prazo']."</td>";
+			echo "<td>".$value['estimativa']."</td>";
+			echo "</tr>";
+		}
+	}
+
 	public function editAuditoria($id, $achado, $manifestacao, $conclusao, $prazo, $estimativa, $auditor)
 	{
 

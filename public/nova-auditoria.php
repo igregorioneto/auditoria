@@ -1,4 +1,4 @@
-<?php require_once '../config/header.inc.html';  ?>
+<?php require_once '../config/header.inc.html'; ?>
 
 <div class="row container">
 	<h5 class="light">Nova Auditoria</h5><hr>
