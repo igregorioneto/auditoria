@@ -5,24 +5,24 @@
 			<label for="achado">Achado</label>
 		</div>		
 		<div class="input-filter col s6">
-			<input type="text" name="achado" class="validate" autofocus>
-			<label for="achado">Manifestação</label>
+			<input type="text" name="manifestacao" class="validate" autofocus>
+			<label for="manifestacao">Manifestação</label>
 		</div>		
 	</div>
 	<div class="row">
 		<div class="input-filter col s6">
-			<input type="text" name="achado" class="validate" autofocus>
-			<label for="achado">Estimativa</label>
+			<input type="number" name="estimativa" class="validate" autofocus>
+			<label for="estimativa">Estimativa</label>
 		</div>
 		<div class="input-filter col s6">
-			<input type="text" name="prazo" class="validate" autofocus>
-			<label for="achado">Prazo</label>
+			<input type="number" name="prazo" class="validate" autofocus>
+			<label for="prazo">Prazo</label>
 		</div>
 	</div>
 	<div class="row">
 		<div class="input-filter col s12">
-			<textarea class="materialize-textarea"></textarea>
-			<label for="achado">Conclusão</label>
+			<textarea class="materialize-textarea" name="conclusao"></textarea>
+			<label for="conclusao">Conclusão</label>
 		</div>
 	</div>
 	<div class="row">
@@ -33,10 +33,7 @@
 	</div>
 	<div class="row">
 		<div class="input-filter col s12">
-			<button class="btn waves-effect waves-light" type="submit">Cadastrar
-				<i class="material-icons right">send</i>
-			</button>
-			<a href="home.php" class="btn red">cancelar</a>
+			<input type="submit" value="cadastrar" class="btn">
 		</div>
 	</div>
 	

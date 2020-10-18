@@ -91,7 +91,7 @@ class Auditoria extends Connection implements funcAuditoria
 		$stmt = $conn->prepare($sql);
 		$stmt->bindParam(':achado',$_achado);
 		$stmt->bindParam(':manifestacao',$_manifestacao);
-		$stmt->bindParam('conclusao',$_conclusao);
+		$stmt->bindParam(':conclusao',$_conclusao);
 		$stmt->bindParam(':prazo',$_prazo);
 		$stmt->bindParam(':estimativa',$_estimativa);
 		$stmt->bindParam(':auditor',$_auditor);
